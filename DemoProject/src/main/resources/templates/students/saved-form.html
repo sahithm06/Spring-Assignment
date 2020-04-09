@@ -1,0 +1,81 @@
+
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Saved Student</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h3>Student Directory</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Check Your Data</p>
+	
+		<form action="#"  th:object="${student}" >
+			
+			<!--  add a hidden form field for updates -->			 
+			<input type="hidden" th:field="*{id}"/>			 
+		
+			<input type="text" th:field="*{firstName}"
+					class="form-control mb-4 col-4" placeholder="First name" readonly="readonly">
+
+			<input type="text" th:field="*{lastName}"
+					class="form-control mb-4 col-4" placeholder="Last name" readonly="readonly">
+
+			<input type="text" th:field="*{email}"
+					class="form-control mb-4 col-4" placeholder="Email" readonly="readonly">
+					
+			<input type="text" th:field="*{address}"
+					class="form-control mb-4 col-4" placeholder="Address" readonly="readonly">		
+				
+			 <!-- Add update button/link -->
+	       
+						
+		</form>
+	
+			 
+	           <a th:href="@{/students/showFormForUpdate(studentId=${student.id} ) }"
+	          class="btn btn-info btn-sm">
+	          Update
+	           </a>
+	          
+	           <!-- Add deletebutton/link -->
+	         
+	           <a th:href="@{/students/delete(studentId=${student.id} ) }"
+	            class="btn btn-danger btn-sm"
+	           onclick="if(!(confirm('are you sure you want to delete')))
+	             return false">
+	          
+	          Delete
+	          
+	             </a>
+	        
+	          
+		<hr>
+		<a th:href="@{/students/list}">Back to Students List</a>
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
